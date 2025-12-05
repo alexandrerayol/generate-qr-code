@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -8,6 +7,8 @@ export default function QRCodeGenerator() {
 
   const downloadQRCode = () => {
     const svg = qrRef.current;
+    if (!svg) return;
+
     const svgData = new XMLSerializer().serializeToString(svg);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
