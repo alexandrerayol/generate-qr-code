@@ -3,12 +3,14 @@
 import React, { useState, useRef } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
+interface Size {}
+
 export default function QRCodeGenerator() {
   const [text, setText] = useState("https://example.com");
   const [selectedSize, setSelectedSize] = useState("1080");
   const qrRef = useRef(null);
 
-  const sizes = {
+  const sizes: Record<string, { label: string; size: number }> = {
     "720": { label: "HD (720p)", size: 720 },
     "1080": { label: "Full HD (1080p)", size: 1080 },
     "1440": { label: "2K (1440p)", size: 1440 },
